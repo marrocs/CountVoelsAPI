@@ -37,7 +37,7 @@ EN:
 This is an API written for a job interview at Blintz startup, on version 1.1.
 
 This API aims to receive a JSON with strings and return another JSON with those same strings as a dict with strings as keys 
-    and the number os voels as values.
+    and the number os vowels as values.
 
 To run this API you must have installed Python 3 in your machine. This done, clone the repository, open the command 
     prompet (for windows) or terminal (for linux) at 'api' directory and execute the following command:
