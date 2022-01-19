@@ -4,7 +4,11 @@ from flask import request, jsonify
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-palavras = ['uva','abacate', 'brotas', 'mamao', 'manga', 'pindamonhangaba', 'gato', 'alemanha']
+with open(r'C:\Users\Lucas\Documents\LUCAS\TRABALHO\ENTREVISTAS\BLINTZ\word.json.txt', 'r') as json_file:
+
+    #json_file = json.dumps(json_file)
+
+    palavras = [x for x in json_file]
 
 @app.route('/', methods=['GET'])
 def home():
@@ -19,25 +23,27 @@ def list_array():
 @app.route('/api/v1/resources/palavras', methods=['GET'])
 def order_array():
     
-    # input words right down
-    palavras = ['uva','abacate', 'brotas', 'mamao', 'manga', 'pindamonhangaba', 'gato', 'alemanha']
-    voels, vs, count = ['a', 'e', 'i', 'o', 'u'], [], 0
+    with open(r'C:\Users\Lucas\Documents\LUCAS\TRABALHO\ENTREVISTAS\BLINTZ\word.json.txt', 'r') as json_file:
+        # input words right down
+        palavras = [x for x in json_file]
+        voels, vs, count = ['a', 'e', 'i', 'o', 'u'], [], 0
 
     # iterate array to count voels
-    for w in palavras:
-        if type(w) is not str:
-            raise TypeError('A função só aceita parametros do tipo string. Altere todos os elementos em "api.txt" para tipo string.')
-        else:
-            for l in w:
-                if l in voels:
-                    count += 1  # count voels
-            vs.append(count)
-            count = 0
+        for w in palavras:
+            
+                if type(w) is not str:
+                    raise TypeError('A função só aceita parametros do tipo string. Altere todos os elementos em "api.txt" para tipo string.')
+                else:
+                    for l in w:
+                        if l in voels:
+                            count += 1  # count voels
+                    vs.append(count)
+                    count = 0
 
-    palavras = list(zip(palavras, vs))  # zip lists
+        palavras = list(zip(palavras, vs))  # zip lists
 
-    palavras = {x: y for x, y in sorted(palavras, key=lambda item: item[1])}  # order
+        palavras = {x: y for x, y in sorted(palavras, key=lambda item: item[1])}  # order
 
-    return jsonify(palavras)
+        return jsonify(palavras)
 
 app.run()
