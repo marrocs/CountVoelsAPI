@@ -5,7 +5,7 @@ Esta é uma API criada para o processo seletivo de emprego da Blintz startup, em
 O objetivo desta API é receber um JSON com strings e retornar um JSON com as mesmas strings, porém em formato 
     de dicionário, contendo a string como chave e o número de vogais como valor.
 
-Para rodar esta API é necessário ter instalado Python 3 em sua máquina. Cumprindo esse requisito, clone o repositório, 
+Para rodar esta API é necessário ter instalado Python 3 em sua máquina. Cumprido esse requisito, clone o repositório, 
     abra o prompet de comando (se windows) ou terminal (se linux) na pasta chamada 'api' e execute o comando abaixo:
 
 	python api.txt
