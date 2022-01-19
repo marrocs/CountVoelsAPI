@@ -21,23 +21,23 @@ def order_array():
     
     # input words right down
     palavras = ['uva','abacate', 'brotas', 'mamao', 'manga', 'pindamonhangaba', 'gato', 'alemanha']
-    voels, vs = ['a', 'e', 'i', 'o', 'u'], []
-    count = 0
+    voels, vs, count = ['a', 'e', 'i', 'o', 'u'], [], 0
 
     # iterate array to count voels
     for w in palavras:
-        for l in w:
-            if l in voels:
-                count += 1  # count voels
-        vs.append(count)
-        count = 0
+        if type(w) is not str:
+            raise TypeError('A função só aceita parametros do tipo string. Altere todos os elementos em "api.txt" para tipo string.')
+        else:
+            for l in w:
+                if l in voels:
+                    count += 1  # count voels
+            vs.append(count)
+            count = 0
 
     palavras = list(zip(palavras, vs))  # zip lists
 
-    palavras_dict = {palavras[x][0]: palavras[x][1] for x in range(len(palavras))}
+    palavras = {x: y for x, y in sorted(palavras, key=lambda item: item[1])}  # order
 
-    palavras_dict = {k: v for k, v in sorted(palavras_dict.items(), key=lambda x: x[1])}
-
-    return jsonify(palavras_dict)
+    return jsonify(palavras)
 
 app.run()
