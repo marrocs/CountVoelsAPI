@@ -1,6 +1,6 @@
 BR:
 
-Esta é uma API criada para o processo seletivo de emprego da Blintz startup, em sua versão 1.0.
+Esta é uma API criada para o processo seletivo de emprego da Blintz startup, em sua versão 1.1.
 
 O objetivo desta API é receber um JSON com strings e retornar um JSON com as mesmas strings, porém em formato 
     de dicionário, contendo a string como chave e o número de vogais como valor.
@@ -12,20 +12,29 @@ Para rodar esta API é necessário ter instalado Python 3 em sua máquina. Cumpr
 
     e um servidor será inicializado no endereço IP 'http://127.0.0.1:5000' (localhost).
 
-Após, abra o arquivo 'api.txt' e na variavel 'palavras' (linha 7) adicione as palavras que desejar contar as vogais, entre 
-    aspas simples e separadas por virgula. Copie e cole essa mesma variavel para dentro da função 'order_array()' (linha 23).
+Após, abra o arquivo 'api.txt' e na linha 4, no lugar indicado cole o endereço completo do local em seu disco de onde 
+    está o arquivo contendo as palavras que desejar contar as vogais, incluindo o nome do arquivo. Faça a mesma 
+    alteração na linha 23.
 
 Em seguida, adicione '/api/v1/resources/palavras/all' ao final do endereço IP acima para ver uma lista de todos as palavras
     adicionadas. Ou então, para executar a contagem de vogais, adicione '/api/v1/resources/palavras' ao final do mesmo 
     endereço.
 
-A versão 1.0 organiza o JSON por ordem alfabética das chaves.
 
-ATENÇÃO: ambas as linhas 7 e 23 devem conter os mesmos dados.
+ATENÇÃO: 
+    Ambas as linhas 4 e 23 devem conter os mesmos dados. Do contrario, será levantado um 
+        FileNotFoundError: [Errno 2] No such file or directory: '__archive__full__path__here__';
+    O arquivo a ser lido deve estar, preferencialmente, estar formatado em uma palavra por linha, separados por vírgula 
+        e conter apenas strings;
+
+A versão 1.0 organiza as palavras pela ordem alfabética das chaves.
+A versão 1.1 recebe arquivo .json.
+
+A FAZER: tirar os '\n' do retorno em json; implementar formatação inicial; 
 
 EN:
 
-This is an API written for a job interview at Blintz startup, on version 1.0.
+This is an API written for a job interview at Blintz startup, on version 1.1.
 
 This API aims to receive a JSON with strings and return another JSON with those same strings as a dict with strings as keys 
     and the number os voels as values.
@@ -37,13 +46,19 @@ To run this API you must have installed Python 3 in your machine. This done, clo
 
     and a localhost will be initialized at IP adress 'http://127.0.0.1:5000'.
 
-After this, open the 'api.txt' archive and in the 7th line substitute the words at 'palavras' variable for those you
-    want to count voels, between simple quotation marks and separeted by commas. Also, copy and paste that variable at the 
-    23th line, at 'order_array()'. 
+After this, open the 'api.txt' archive and in the 4th line paste the full path in your computer where is located the file where is 
+    written the words you want to count voels, including the name of the archive. Repeat the process at line 23. 
 
 Then, copy and paste '/api/v1/resources/palavras/all' after the localhost adress in your navigator to see a list of all words 
     added. Or copy and paste '/api/v1/resources/palavras' to execute the voel count.
 
-The v1 sorts words in 'palavras' by alfabetical order from keys.
 
-ATTENTION: Both lines 7 and 23 must contain same data.
+ATTENTION: 
+    Both lines 4 and 23 must contain same data. Otherwise, there will be raised an 
+        FileNotFoundError: [Errno 2] No such file or directory: '__archive__full__path__here__';
+    The file to be read should be in format of one word per line, separeted by comma and contain only string format;
+
+v.1 sorts words in 'palavras' by alfabetical order from keys.
+v.1.1 read json.file.
+
+TODO: clear '\n' from the json return; implement initial format
